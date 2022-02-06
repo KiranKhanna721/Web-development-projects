@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-3">
+    <div class="header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-4 fw-normal">Blood Pressure Prediction</h1>
+    </div>
+    
+	<div class="p-3 pb-md-3 mx-auto col-8 text-center">
+		<form class="card p-2 " action="{{ url_for('bppredict')}}" method="post">
+			<input type="text" name="Level_of_Hemoglobin" placeholder="Level_of_Hemoglobin" required="required" />
+			<input type="text" name="Genetic_Pedigree_Coefficient" placeholder="Genetic_Pedigree_Coefficient" required="required" />
+            <input type="text" name="Age" placeholder="Age" required="required" />
+			<input type="text" name="BMI" placeholder="BMI" required="required" />
+            <input type="text" name="Sex" placeholder="Sex" required="required" />
+            <input type="text" name="Smoking" placeholder="Smoking" required="required" />
+            <input type="text" name="Physical_activity" placeholder="Physical_activity" required="required" />
+			<input type="text" name="salt_content_in_the_diet" placeholder="salt_content_in_the_diet" required="required" />
+			<input type="text" name="alcohol_consumption_per_day" placeholder="alcohol_consumption_per_day" required="required" />
+			<input type="text" name="Level_of_Stress" placeholder="Level_of_Stress" required="required" />
+			<input type="text" name="Chronic_kidney_disease" placeholder="Chronic_kidney_disease" required="required" />
+			<input type="text" name="Adrenal_and_thyroid_disorders" placeholder="Adrenal_and_thyroid_disorders" required="required" />
+			<button type="submit" id='submit' name='submit' class="btn btn-secondary">Analyze</button>
+		</form>
+	</div>
+
+
+{% if predict %}
+	<div class="p-3 pb-md-3 mx-auto col-8 text-center">
+		<div class="col-md-5 col-lg-12 order-md-last mt-3">
+			<table class="table">
+			  <thead>
+				<tr>
+					<th scope="row">Prediction
+						<th scope="col">{{predict}}</th>
+					</th>
+				</tr>
+			  </thead>
+			</table>
+		</div>
+	</div>	
+{%endif%}
+</div>
+{% endblock %}

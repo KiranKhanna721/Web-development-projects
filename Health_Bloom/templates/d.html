@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-3">
+    <div class="header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-4 fw-normal">Diabetes Prediction</h1>
+    </div>
+    
+	<div class="p-3 pb-md-3 mx-auto col-8 text-center">
+		<form class="card p-2 " action="{{ url_for('dpredict')}}" method="post">
+			<input type="text" name="no_times_pregnant" placeholder="no_times_pregnant" required="required" />
+			<input type="text" name="glucose_concentration" placeholder="glucose_concentration" required="required" />
+            <input type="text" name="blood_pressure" placeholder="blood_pressure" required="required" />
+			<input type="text" name="skin_fold_thickness" placeholder="skin_fold_thickness" required="required" />
+            <input type="text" name="serum_insulin" placeholder="serum_insulin" required="required" />
+            <input type="text" name="bmi" placeholder="bmi" required="required" />
+            <input type="text" name="diabetes pedigree" placeholder="diabetes pedigree" required="required" />
+			<input type="text" name="age" placeholder="age" required="required" />
+			<button type="submit" id='submit' name='submit' class="btn btn-secondary">Analyze</button>
+		</form>
+	</div>
+
+
+{% if predict %}
+	<div class="p-3 pb-md-3 mx-auto col-8 text-center">
+		<div class="col-md-5 col-lg-12 order-md-last mt-3">
+			<table class="table">
+			  <thead>
+				<tr>
+					<th scope="row">Prediction
+						<th scope="col">{{predict}}</th>
+					</th>
+				</tr>
+			  </thead>
+			</table>
+		</div>
+	</div>	
+{%endif%}
+</div>
+{% endblock %}
